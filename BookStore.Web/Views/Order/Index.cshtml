@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Bookstore.Domain.Entities.Order>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Orders";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Orders</h1>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Order ID</th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Customer Email</th>
+                    <th scope="col">Customer Address</th>
+                    <th scope="col">Total Price</th>
+                    <th scope="col">Order Date</th>
+                    <th scope="col">Shopping Cart #</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td>@order.Id</td>
+                        <td>@order.CustomerName</td>
+                        <td>@order.CustomerEmail</td>
+                        <td>@order.CustomerAddress</td>
+                        <td>@order.TotalPrice.ToString("C")</td>
+                        <td>@order.OrderDate</td>
+                        <td>@order.ShoppingCartId</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

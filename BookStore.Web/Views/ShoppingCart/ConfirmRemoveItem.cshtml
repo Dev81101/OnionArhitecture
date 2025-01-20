@@ -1,0 +1,17 @@
+﻿@model int
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Remove Item Confirmation";
+}
+
+<div class="container mt-4">
+    <h1>Remove Item</h1>
+    <p>Are you sure you want to remove this item from your cart?</p>
+
+    <form method="post" asp-action="RemoveItem" asp-controller="ShoppingCart">
+        <input type="hidden" name="cartItemId" value="@Model" />
+        <button type="submit" class="btn btn-danger">Yes, Remove</button>
+        <a href="@Url.Action("Index", "ShoppingCart")" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

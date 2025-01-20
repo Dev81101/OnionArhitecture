@@ -1,0 +1,18 @@
+﻿@model Bookstore.Domain.Entities.Author
+
+@{
+    ViewData["Title"] = "Delete Author";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Delete Author</h2>
+    <p>Are you sure you want to delete the author: <strong>@Model.Name</strong>?</p>
+
+    <form asp-action="DeleteConfirmed" asp-route-id="@Model.Id" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

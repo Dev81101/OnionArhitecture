@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Bookstore.Domain.Entities.Publisher>
+
+@{
+    ViewData["Title"] = "Publishers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Publishers</h2>
+    <a asp-action="Create" class="btn btn-primary mb-3">Add New Publisher</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Books</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var publisher in Model)
+            {
+                <tr>
+                    <td>@publisher.Name</td>
+                    <td>
+                        @foreach (var book in publisher.Books)
+                        {
+                            <span>@book.Title</span>
+                            <br />
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@publisher.Id" class="btn btn-warning">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@publisher.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,18 @@
+﻿@model Bookstore.Domain.Entities.Publisher
+
+@{
+    ViewData["Title"] = "Delete Publisher";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Delete Publisher</h2>
+    <p>Are you sure you want to delete the publisher: <strong>@Model.Name</strong>?</p>
+
+    <form asp-action="DeleteConfirmed" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

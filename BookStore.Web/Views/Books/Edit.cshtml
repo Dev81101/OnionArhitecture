@@ -1,0 +1,58 @@
+﻿@model Bookstore.Domain.Entities.Book
+
+@{
+    ViewData["Title"] = "Edit Book";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h1>Edit Book</h1>
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="form-group">
+            <label for="Title">Title</label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="AuthorId">Author</label>
+            <select asp-for="AuthorId" asp-items="ViewBag.Authors" class="form-control"></select>
+            <span asp-validation-for="AuthorId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="PublisherId">Publisher</label>
+            <select asp-for="PublisherId" asp-items="ViewBag.Publishers" class="form-control"></select>
+            <span asp-validation-for="PublisherId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="Price">Price</label>
+            <input asp-for="Price" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ImagePath" class="control-label"></label>
+            <input type="file" class="form-control" id="Image" name="Image" />
+            <span asp-validation-for="ImagePath" class="text-danger"></span>
+
+            <!-- Display current image if available -->
+            @if (!string.IsNullOrEmpty(Model.ImagePath))
+            {
+                <div class="mt-2">
+                    <label>Current Image:</label><br />
+                    <img src="@Model.ImagePath" alt="Current Image" style="max-width: 150px; max-height: 150px;" />
+                </div>
+            }
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-2">Save</button>
+    </form>
+
+    <div>
+        <a asp-action="Index" class="btn btn-secondary mt-2">Back to List</a>
+    </div>
+</div>

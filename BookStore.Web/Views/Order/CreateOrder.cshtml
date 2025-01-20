@@ -1,0 +1,42 @@
+﻿@model Bookstore.Domain.Entities.Order
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Create Order";
+}
+
+<div class="container mt-4">
+    <h1>Create Your Order</h1>
+
+    <form method="post" asp-action="CreateOrder">
+        <!-- Customer Name -->
+        <div class="form-group">
+            <label asp-for="CustomerName">Full Name</label>
+            <input asp-for="CustomerName" class="form-control" placeholder="Enter your full name" required />
+            <span asp-validation-for="CustomerName" class="text-danger"></span>
+        </div>
+
+        <!-- Customer Email -->
+        <div class="form-group">
+            <label asp-for="CustomerEmail">Email Address</label>
+            <input asp-for="CustomerEmail" class="form-control" placeholder="Enter your email address" required />
+            <span asp-validation-for="CustomerEmail" class="text-danger"></span>
+        </div>
+
+        <!-- Customer Address -->
+        <div class="form-group">
+            <label asp-for="CustomerAddress">Shipping Address</label>
+            <input asp-for="CustomerAddress" class="form-control" placeholder="Enter your shipping address" required />
+            <span asp-validation-for="CustomerAddress" class="text-danger"></span>
+        </div>
+
+        <!-- Total Price (readonly) -->
+        <div class="form-group">
+            <label asp-for="TotalPrice" class="control-label"></label>
+            <input asp-for="TotalPrice" class="form-control" readonly />
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary mt-3">Submit Order</button>
+    </form>
+</div>
